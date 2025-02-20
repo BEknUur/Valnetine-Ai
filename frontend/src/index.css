@@ -135,20 +135,28 @@ body {
 }
 
 .generate-button {
-  width: 100%;
+  width: 80%;
   padding: 12px;
   margin-top: 20px;
-  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  background-size: 200% 200%;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 1px;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 5px 15px rgba(255, 75, 75, 0.4);
-  text-transform: uppercase;
+  transition: all 0.5s ease;
+  box-shadow: 
+    0 10px 20px rgba(255, 65, 108, 0.3),
+    0 4px 10px rgba(255, 65, 108, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: button-gradient 3s ease infinite;
 }
+
 
 /* Обертка для select */
 .select-wrapper {
@@ -222,11 +230,12 @@ body {
   z-index: -1;
 }
 
-
 .generate-button:hover {
-  background: linear-gradient(45deg, #ff416c, #ff4b2b);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 75, 75, 0.6);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 15px 30px rgba(255, 65, 108, 0.4),
+    0 6px 15px rgba(255, 65, 108, 0.3);
+  letter-spacing: 2px;
 }
 
 .generate-button:hover::before {
@@ -234,7 +243,10 @@ body {
 }
 
 .generate-button:active {
-  transform: scale(0.95);
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    0 5px 15px rgba(255, 65, 108, 0.3),
+    0 2px 5px rgba(255, 65, 108, 0.2);
 }
 
 @keyframes button-gradient {
