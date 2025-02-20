@@ -93,8 +93,9 @@ export default function LetterForm({ onLetterGenerated }: { onLetterGenerated: (
       </div> 
 
       <button onClick={handleSubmit} disabled={loading} className="generate-button">
-  <span>{loading ? "✨ Generating..." : "✨ Generate Love Letter"}</span>
-</button>
+        {loading ? <span>✨ Generating...</span> : <span>✨ Generate Love Letter</span>}
+      </button>
+
 
 
       
