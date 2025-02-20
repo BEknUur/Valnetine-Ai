@@ -37,6 +37,9 @@ class LoveLetterRequest(BaseModel):
     tone: str
     language: str = "ru"
 
+@app.get("/")
+async def root():
+    return {"message":"FastApi is working"}
 
 
 @app.post("/generate_letter/")
