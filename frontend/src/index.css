@@ -1,0 +1,615 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ff416c, #ff4b2b, #ff6b6b, #ff8e71);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  color: white;
+  text-align: center;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 2rem 0;
+  background: linear-gradient(to right, #fff, #ffebcd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 5px 15px rgba(255, 75, 43, 0.6);
+  letter-spacing: 2px;
+  position: relative;
+  animation: title-float 3s ease-in-out infinite;
+}
+
+@keyframes title-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+.title::after {
+  content: '💌';
+  font-size: 2.5rem;
+  position: absolute;
+  top: -15px;
+  right: -40px;
+  animation: emoji-float 2s ease-in-out infinite;
+}
+
+@keyframes emoji-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(15deg);
+  }
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 
+              inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  width: 400px;
+  max-width: 90%;
+  margin: 20px auto;
+  transition: all 0.4s ease;
+  transform: perspective(1000px) rotateX(0deg);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  max-height: 75vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.form-container:hover {
+  transform: perspective(1000px) rotateX(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 
+              inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0 2px 5px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(255, 65, 108, 0.2);
+  overflow: hidden;
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.input-field:focus::placeholder {
+  opacity: 0.5;
+  transform: translateX(10px);
+}
+
+.generate-button {
+  width: 80%;
+  padding: 12px;
+  margin-top: 20px;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 
+    0 10px 20px rgba(255, 65, 108, 0.3),
+    0 4px 10px rgba(255, 65, 108, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: button-gradient 3s ease infinite;
+}
+
+
+/* Обертка для select */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Кастомный select */
+.custom-select {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  width: 100%;
+}
+
+/* Добавляем кастомную стрелочку */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 0.8rem;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  pointer-events: none;
+}
+
+/* Стиль при наведении */
+.custom-select:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Стиль при фокусе */
+.custom-select:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Стили для вариантов */
+.custom-select option {
+  background: rgba(255, 75, 75, 0.8);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+
+.generate-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.generate-button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 15px 30px rgba(255, 65, 108, 0.4),
+    0 6px 15px rgba(255, 65, 108, 0.3);
+  letter-spacing: 2px;
+}
+
+.generate-button:hover::before {
+  opacity: 1;
+}
+
+.generate-button:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    0 5px 15px rgba(255, 65, 108, 0.3),
+    0 2px 5px rgba(255, 65, 108, 0.2);
+}
+
+@keyframes button-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.generate-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.generate-button:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.letter-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+              inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  width: 300px;
+  max-width: 90%;
+  transform: perspective(1000px);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  animation: letter-appear 1s cubic-bezier(0.26, 1.36, 0.74, 1.04);
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.language-support-message {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffebcd;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.language-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.language-dropdown {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none; 
+  text-align: center;
+  width: 180px;
+}
+
+
+.language-dropdown::after {
+  content: "▼";
+  font-size: 0.8rem;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.language-dropdown:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.language-dropdown:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+.language-dropdown option {
+  background: rgba(255, 75, 75, 0.8);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-10deg) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+
+.letter-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.letter-container:hover {
+  transform: perspective(1000px) rotateX(2deg) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.letter-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffebcd;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.letter-title::after {
+  content: '💘';
+  font-size: 1.5rem;
+  position: absolute;
+  top: -10px;
+  margin-left: 10px;
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.letter-text {
+  font-style: italic;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 0 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: text-appear 1s forwards 0.5s;
+}
+
+@keyframes text-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-text::before,
+.letter-text::after {
+  content: '"';
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+}
+
+.letter-text::before {
+  left: -5px;
+  top: -10px;
+}
+
+.letter-text::after {
+  right: -5px;
+  bottom: -30px;
+}
+
+.heart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.animate-floating {
+  animation: custom-floating var(--float-duration, 6s) infinite ease-in-out;
+  font-size: var(--size, 2rem);
+  position: absolute;
+  opacity: var(--opacity, 0.7);
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  z-index: -1;
+}
+
+@keyframes custom-floating {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: var(--opacity, 0.7);
+  }
+  50% {
+    transform: translateY(calc(var(--float-distance, -30px))) rotate(var(--rotate, 15deg)) scale(var(--scale, 1.1));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: var(--opacity, 0.7);
+  }
+}
+
+.heart-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%; 
+    max-width: 400px; 
+    padding: 20px; 
+  }
+
+  .title {
+    font-size: 2rem; 
+  }
+
+  .input-field {
+    font-size: 1rem; 
+    padding: 10px;
+  }
+
+  .generate-button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .language-dropdown {
+    width: 100%; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .form-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .input-field {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .generate-button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .letter-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .letter-title {
+    font-size: 1.8rem;
+  }
+
+  .letter-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover; 
+    background-attachment: fixed;
+  }
+}
+
+
+
+
+
+
+
+
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.input-field:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading .button-text {
+  opacity: 0;
+}
