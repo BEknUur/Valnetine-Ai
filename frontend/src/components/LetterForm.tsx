@@ -97,7 +97,7 @@ export default function LetterForm({ onLetterGenerated }: { onLetterGenerated: (
 </button>
 
 
-      <p className="footer-text">Created with AI magic, delivered with love 💕</p>
+      
     </div>
   );
 }
