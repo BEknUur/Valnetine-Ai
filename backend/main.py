@@ -49,17 +49,15 @@ async def root():
 async def generate_letter(request: LoveLetterRequest):
     """Генерация короткого любовного письма (максимум 5 предложений)"""
     try:
-        # Проверяем, чтобы не было пустых данных
         if not request.recipient_name.strip():
             raise HTTPException(status_code=400, detail="Recipient name cannot be empty")
 
-        # Определяем язык, если он не указан
+     
         language = request.language
         if language not in ["en", "ru", "kk"]:
             detected_lang = detect(f"{request.recipient_name} {request.preferences}")
             language = "ru" if detected_lang.startswith("ru") else "kk" if detected_lang.startswith("kk") else "en"
 
-        # Генерируем запрос к OpenAI
         prompt = (
             f"Write a {request.tone} love letter to {request.recipient_name or 'your beloved'} "
             f"in no more than 5 sentences, based on their interests: {request.preferences or 'romantic moments'}. "
