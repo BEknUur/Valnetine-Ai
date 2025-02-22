@@ -83,7 +83,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: auto;
+  overflow: hidden;
   max-height: 75vh;
   overflow-y: auto;
   margin-bottom: 20px;
@@ -180,7 +180,6 @@ body {
   width: 100%;
 }
 
-/* Добавляем кастомную стрелочку */
 .select-wrapper::after {
   content: "▼";
   font-size: 0.8rem;
@@ -192,18 +191,18 @@ body {
   pointer-events: none;
 }
 
-/* Стиль при наведении */
+
 .custom-select:hover {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Стиль при фокусе */
+
 .custom-select:focus {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Стили для вариантов */
+
 .custom-select option {
   background: rgba(255, 75, 75, 0.8);
   color: white;
@@ -575,13 +574,6 @@ body {
     background-attachment: fixed;
   }
 }
-
-
-
-
-
-
-
 
 .loading {
   position: relative;
