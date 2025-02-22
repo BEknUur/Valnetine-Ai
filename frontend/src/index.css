@@ -135,26 +135,21 @@ body {
 }
 
 .generate-button {
-  width: 80%;
+  width: 90%; 
+  max-width: 400px; 
   padding: 12px;
-  margin-top: 20px;
+  margin: 20px auto; 
+  display: block;
   background: linear-gradient(45deg, #ff416c, #ff4b2b);
-  background-size: 200% 200%;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 700;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
   letter-spacing: 1px;
   color: white;
   cursor: pointer;
-  transition: all 0.5s ease;
-  box-shadow: 
-    0 10px 20px rgba(255, 65, 108, 0.3),
-    0 4px 10px rgba(255, 65, 108, 0.2);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  animation: button-gradient 3s ease infinite;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(255, 75, 43, 0.4);
 }
 
 
@@ -231,11 +226,9 @@ body {
 }
 
 .generate-button:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 
-    0 15px 30px rgba(255, 65, 108, 0.4),
-    0 6px 15px rgba(255, 65, 108, 0.3);
-  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(255, 75, 43, 0.5);
 }
 
 .generate-button:hover::before {
@@ -243,10 +236,8 @@ body {
 }
 
 .generate-button:active {
-  transform: translateY(2px) scale(0.98);
-  box-shadow: 
-    0 5px 15px rgba(255, 65, 108, 0.3),
-    0 2px 5px rgba(255, 65, 108, 0.2);
+  transform: translateY(2px);
+  box-shadow: 0 3px 6px rgba(255, 75, 43, 0.3);
 }
 
 @keyframes button-gradient {
